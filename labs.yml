@@ -13,11 +13,11 @@
       no_log: true
       tags: pip 
 
-    - name: installgns3fy
-      pip:
-        name:
-          - git+https://github.com/davidban77/gns3fy
-      when: "'gns3fy' not in pips.packages.pip"
+    # - name: installgns3fy
+    #   pip:
+    #     name:
+    #       - git+https://github.com/davidban77/gns3fy
+    #   when: "'gns3fy' not in pips.packages.pip"
 
     # load in our local variable settings which gives us the gns3 server ip and other sundry variables
     - name: loadLocalSettings
@@ -52,7 +52,7 @@
     - name: loadLab
       ansible.builtin.include_vars:
         file: "labs/{{ lab }}.yml"
-      no_log: true
+      # no_log: true
 
     - name: Operation
       debug:

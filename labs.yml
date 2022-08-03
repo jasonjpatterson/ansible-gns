@@ -7,11 +7,11 @@
     - davidban77.gns3
 
   tasks:
-    # we want to install the gns3fy pip package only if it's not installed.  get a list of installed pips
-    - community.general.pip_package_info:
-      register: pips
-      no_log: true
-      tags: pip 
+    # # we want to install the gns3fy pip package only if it's not installed.  get a list of installed pips
+    # - community.general.pip_package_info:
+    #   register: pips
+    #   no_log: true
+    #   tags: pip 
 
     # - name: installgns3fy
     #   pip:

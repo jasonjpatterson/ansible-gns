@@ -33,18 +33,26 @@
         imageType: "{{ imageType | default('veos') }}"
         execute: "{{ execute | default('create') }}"
       no_log: True
-      tags: test
+      
 
     # pull out a single image from the images dict loaded from local.yml
-    - name: chooseImage
+    - name: chooseStdImage
       set_fact:
-        image: "{{ images[imageType] }}"
+        std_image: "{{ std_images[imageType] }}"
+      no_log: false
+      tags: test 
+
+    - name: chooseMgmtImage
+      set_fact:
+        mgmt_image: "{{ mgmt_images[imageType] }}"
       no_log: false
       tags: test 
 
     - name: debug image 
       debug:  
-        msg: "{{ image }}"
+        msg: 
+          - "{{ std_image }}" 
+          - "{{ mgmt_image }}"
       tags: test
 
 

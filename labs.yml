@@ -31,9 +31,11 @@
     - name: setImageType
       set_fact:
         imageType: "{{ imageType | default('veos') }}"
+        mgmtImageType: "{{ builtinType | default('builtin') }}"
         execute: "{{ execute | default('create') }}"
-      no_log: True
-      
+      # no_log: True
+      #comment out execute above, then delete this comment  
+      tags: test
 
     # pull out a single image from the images dict loaded from local.yml
     - name: chooseStdImage
@@ -44,7 +46,7 @@
 
     - name: chooseMgmtImage
       set_fact:
-        mgmt_image: "{{ mgmt_images[imageType] }}"
+        mgmt_image: "{{ mgmt_images[mgmtImageType] }}"
       no_log: false
       tags: test 
 

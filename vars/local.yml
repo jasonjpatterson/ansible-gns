@@ -25,9 +25,14 @@ std_images:
     interfacePrefix: "Eth"
     type: "veos"
     managementPort: "ma1"
+
 mgmt_images:
   veos:
     name: "EOS-4.28.1-mgmt"
     interfacePrefix: "Eth"
     type: "veos"
     managementPort: "ma1"
+  builtin:
+    name: "Ethernet switch"
+    interfacePrefix: "Ethernet"
+    type: "builtin"

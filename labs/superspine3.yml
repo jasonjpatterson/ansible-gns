@@ -1,0 +1,284 @@
+---
+gns3_project_name: "{{ PREFIX }}RockiesLab-{{ std_image.type }}"
+gns3_nodes_strategy: "none"
+
+gns3_nodes_spec:
+  - name: DC1-Spine1
+    template: "{{ std_image.name }}"
+    x: -700.0
+    y: -400.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC1-Spine2
+    template: "{{ std_image.name }}"
+    x: -600.0
+    y: -400.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: DC1-Leaf1A
+    template: "{{ std_image.name }}"
+    x: -900.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC1-Leaf1B
+    template: "{{ std_image.name }}"
+    x: -800.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC1-Leaf2A
+    template: "{{ std_image.name }}"
+    x: -700.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+  
+
+  - name: DC1-Leaf2B
+    template: "{{ std_image.name }}"
+    x: -600.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: DC1-Leaf3A
+    template: "{{ std_image.name }}"
+    x: -500.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+  
+  - name: DC1-Leaf3B
+    template: "{{ std_image.name }}"
+    x: -400.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: DC1-Host1
+    template: "{{ std_image.name }}"
+    x: -850.0
+    y: 0.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC1-Host2
+    template: "{{ std_image.name }}"
+    x: -650.0
+    y: 0.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC1-Host3
+    template: "{{ std_image.name }}"
+    x: -450.0
+    y: 0.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: DCI
+    template: "{{ std_image.name }}"
+    x: -250.0
+    y: 0.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: DC2-Spine1
+    template: "{{ std_image.name }}"
+    x: 100.0
+    y: -400.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC2-Spine2
+    template: "{{ std_image.name }}"
+    x: 200.0
+    y: -400.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: DC2-Leaf3A
+    template: "{{ std_image.name }}"
+    x: -100.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC2-Leaf3B
+    template: "{{ std_image.name }}"
+    x: 0.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: DC2-Leaf2A
+    template: "{{ std_image.name }}"
+    x: 100.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC2-Leaf2B
+    template: "{{ std_image.name }}"
+    x: 200.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: DC2-Leaf1A
+    template: "{{ std_image.name }}"
+    x: 300.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC2-Leaf1B
+    template: "{{ std_image.name }}"
+    x: 400.0
+    y: -200.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: DC2-Host3
+    template: "{{ std_image.name }}"
+    x: -50.0
+    y: 0.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC2-Host2
+    template: "{{ std_image.name }}"
+    x: 150.0
+    y: 0.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: DC2-Host1
+    template: "{{ std_image.name }}"
+    x: 350.0
+    y: 0.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+
+  - name: Mgmt1
+    template: "{{ mgmt_image.name }}"
+    x: -550.0
+    y: 100.0
+    z: 1.0
+
+  - name: Mgmt2
+    template: "{{ mgmt_image.name }}"
+    x: -350.0
+    y: 100.0
+    z: 1.0
+
+  - name: Mgmt3
+    template: "{{ mgmt_image.name }}"
+    x: -150.0
+    y: 100.0
+    z: 1.0
+
+  - name: Mgmt4
+    template: "{{ mgmt_image.name }}"
+    x: 50.0
+    y: 100.0
+    z: 1.0
+
+
+  - name: Cloud1
+    template: "Cloud"
+    x: -250.0
+    y: 100
+    z: 1.0
+
+gns3_links_spec:
+  #- [ sw1, port, sw2, port ]
+  - [ 'DC1-Spine1',    "{{ std_image.interfacePrefix }}1", 'DC1-Leaf1A',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC1-Spine1',    "{{ std_image.interfacePrefix }}2", 'DC1-Leaf1B',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC1-Spine1',    "{{ std_image.interfacePrefix }}3", 'DC1-Leaf2A',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC1-Spine1',    "{{ std_image.interfacePrefix }}4", 'DC1-Leaf2B',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Spine1',    "{{ std_image.interfacePrefix }}5", 'DC1-Leaf3A',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC1-Spine1',    "{{ std_image.interfacePrefix }}6", 'DC1-Leaf3B',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC1-Spine2',    "{{ std_image.interfacePrefix }}1", 'DC1-Leaf1A',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Spine2',    "{{ std_image.interfacePrefix }}2", 'DC1-Leaf1B',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Spine2',    "{{ std_image.interfacePrefix }}3", 'DC1-Leaf2A',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Spine2',    "{{ std_image.interfacePrefix }}4", 'DC1-Leaf2B',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Spine2',    "{{ std_image.interfacePrefix }}5", 'DC1-Leaf3A',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Spine2',    "{{ std_image.interfacePrefix }}6", 'DC1-Leaf3B',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Leaf1A',    "{{ std_image.interfacePrefix }}5", 'DC1-Host1',   "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC1-Leaf1A',    "{{ std_image.interfacePrefix }}8", 'DC1-Leaf1B',  "{{ std_image.interfacePrefix }}8" ]
+  - [ 'DC1-Leaf1B',    "{{ std_image.interfacePrefix }}5", 'DC1-Host1',   "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Leaf2A',    "{{ std_image.interfacePrefix }}5", 'DC1-Host2',   "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC1-Leaf2A',    "{{ std_image.interfacePrefix }}8", 'DC1-Leaf2B',  "{{ std_image.interfacePrefix }}8" ]
+  - [ 'DC1-Leaf2B',    "{{ std_image.interfacePrefix }}5", 'DC1-Host2',   "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Leaf3A',    "{{ std_image.interfacePrefix }}5", 'DC1-Host3',   "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC1-Leaf3A',    "{{ std_image.interfacePrefix }}7", 'DCI',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC1-Leaf3A',    "{{ std_image.interfacePrefix }}8", 'DC1-Leaf3B',  "{{ std_image.interfacePrefix }}8" ]
+  - [ 'DC1-Leaf3B',    "{{ std_image.interfacePrefix }}5", 'DC1-Host3',   "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC1-Leaf3B',    "{{ std_image.interfacePrefix }}7", 'DCI',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Spine1',    "{{ std_image.interfacePrefix }}1", 'DC2-Leaf1A',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC2-Spine1',    "{{ std_image.interfacePrefix }}2", 'DC2-Leaf1B',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC2-Spine1',    "{{ std_image.interfacePrefix }}3", 'DC2-Leaf2A',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC2-Spine1',    "{{ std_image.interfacePrefix }}4", 'DC2-Leaf2B',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Spine1',    "{{ std_image.interfacePrefix }}5", 'DC2-Leaf3A',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC2-Spine1',    "{{ std_image.interfacePrefix }}6", 'DC2-Leaf3B',  "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC2-Spine2',    "{{ std_image.interfacePrefix }}1", 'DC2-Leaf1A',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Spine2',    "{{ std_image.interfacePrefix }}2", 'DC2-Leaf1B',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Spine2',    "{{ std_image.interfacePrefix }}3", 'DC2-Leaf2A',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Spine2',    "{{ std_image.interfacePrefix }}4", 'DC2-Leaf2B',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Spine2',    "{{ std_image.interfacePrefix }}5", 'DC2-Leaf3A',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Spine2',    "{{ std_image.interfacePrefix }}6", 'DC2-Leaf3B',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Leaf1A',    "{{ std_image.interfacePrefix }}5", 'DC2-Host1',   "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC2-Leaf1A',    "{{ std_image.interfacePrefix }}8", 'DC2-Leaf1B',  "{{ std_image.interfacePrefix }}8" ]
+  - [ 'DC2-Leaf1B',    "{{ std_image.interfacePrefix }}5", 'DC2-Host1',   "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Leaf2A',    "{{ std_image.interfacePrefix }}5", 'DC2-Host2',   "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC2-Leaf2A',    "{{ std_image.interfacePrefix }}8", 'DC2-Leaf2B',  "{{ std_image.interfacePrefix }}8" ]
+  - [ 'DC2-Leaf2B',    "{{ std_image.interfacePrefix }}5", 'DC2-Host2',   "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Leaf3A',    "{{ std_image.interfacePrefix }}5", 'DC2-Host3',   "{{ std_image.interfacePrefix }}1" ]
+  - [ 'DC2-Leaf3A',    "{{ std_image.interfacePrefix }}7", 'DCI',  "{{ std_image.interfacePrefix }}3" ]
+  - [ 'DC2-Leaf3A',    "{{ std_image.interfacePrefix }}8", 'DC2-Leaf3B',  "{{ std_image.interfacePrefix }}8" ]
+  - [ 'DC2-Leaf3B',    "{{ std_image.interfacePrefix }}5", 'DC2-Host3',   "{{ std_image.interfacePrefix }}2" ]
+  - [ 'DC2-Leaf3B',    "{{ std_image.interfacePrefix }}7", 'DCI',  "{{ std_image.interfacePrefix }}4" ]
+  - [ 'Mgmt1', "{{ mgmt_image.interfacePrefix }}1", 'DC1-Spine1',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt1', "{{ mgmt_image.interfacePrefix }}2", 'DC1-Spine2',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt1', "{{ mgmt_image.interfacePrefix }}3", 'DC1-Leaf1A',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt1', "{{ mgmt_image.interfacePrefix }}4", 'DC1-Leaf1B',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt1', "{{ mgmt_image.interfacePrefix }}5", 'DC1-Leaf2A',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt1', "{{ mgmt_image.interfacePrefix }}6", 'DC1-Leaf2B',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt1', "{{ mgmt_image.interfacePrefix }}7", 'DC1-Leaf3A',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt2', "{{ mgmt_image.interfacePrefix }}1", 'DC1-Leaf3B',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt2', "{{ mgmt_image.interfacePrefix }}2", 'DC1-Host1',   "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt2', "{{ mgmt_image.interfacePrefix }}3", 'DC1-Host2',   "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt2', "{{ mgmt_image.interfacePrefix }}4", 'DC1-Host3',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt2', "{{ mgmt_image.interfacePrefix }}5", 'DCI', "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt2', "{{ mgmt_image.interfacePrefix }}6", 'DC2-Spine1',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt2', "{{ mgmt_image.interfacePrefix }}7", 'DC2-Spine2',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt3', "{{ mgmt_image.interfacePrefix }}1", 'DC2-Leaf1A',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt3', "{{ mgmt_image.interfacePrefix }}2", 'DC2-Leaf1B',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt3', "{{ mgmt_image.interfacePrefix }}3", 'DC2-Leaf2A',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt3', "{{ mgmt_image.interfacePrefix }}4", 'DC2-Leaf2B',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt3', "{{ mgmt_image.interfacePrefix }}5", 'DC2-Leaf3A',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt3', "{{ mgmt_image.interfacePrefix }}6", 'DC2-Leaf3B',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt3', "{{ mgmt_image.interfacePrefix }}7", 'DC2-Host1',   "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt4', "{{ mgmt_image.interfacePrefix }}1", 'DC2-Host2',   "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt4', "{{ mgmt_image.interfacePrefix }}2", 'DC2-Host3',  "{{ std_image.managementPort }}" ]
+  - [ 'Mgmt1', "{{ mgmt_image.interfacePrefix }}0", 'Mgmt4', "{{ mgmt_image.interfacePrefix }}4" ]
+  - [ 'Mgmt2', "{{ mgmt_image.interfacePrefix }}0", 'Mgmt4', "{{ mgmt_image.interfacePrefix }}5" ]
+  - [ 'Mgmt3', "{{ mgmt_image.interfacePrefix }}0", 'Mgmt4', "{{ mgmt_image.interfacePrefix }}6" ]
+  - [ 'Mgmt4', "{{ mgmt_image.interfacePrefix }}0", 'Cloud1', "eth1" ]
+  #- [ sw1, port, sw2, port ]

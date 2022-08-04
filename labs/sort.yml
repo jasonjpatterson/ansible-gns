@@ -1,0 +1,26 @@
+
+
+- name: Mgmt1
+    template: "{{ mgmt_image.name }}"
+    x: -550.0
+    y: 100.0
+    z: 1.0
+
+- name: Mgmt2
+    template: "{{ mgmt_image.name }}"
+    x: 350.0
+    y: 100.0
+    z: 1.0
+
+- name: Mgmt3
+    template: "{{ mgmt_image.name }}"
+    x: 150.0
+    y: 100.0
+    z: 1.0
+
+- name: Mgmt4
+    template: "{{ mgmt_image.name }}"
+    x: 50.0
+    y: 100.0
+    z: 1.0
+

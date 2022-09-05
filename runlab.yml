@@ -1,0 +1,83 @@
+---
+# This is a sample playbook to build out the gns environment. It is a reduced version of "lab"
+# meant to run veos (not ceos) and although you still could, it isn't meant to pull dynamic variables on the command line.
+- name: labScript
+  hosts: localhost
+  gather_facts: false
+
+  collections:
+    - davidban77.gns3
+
+  tasks:
+  
+    - name: loadLocalSettings
+      ansible.builtin.include_vars:
+        file: "vars/local.yml"
+      no_log: false
+      tags: test
+
+    # because we can't set and use a variable in the same set_fact we need to have a separate task
+    #   to default these values - these are commands we can set from --extra-vars or "e" on the command line
+    - name: setImageType
+      set_fact:
+        imageType: "{{ imageType | default('veos') }}"
+        mgmtImageType: "{{ builtinType | default('builtin') }}"
+        execute: "{{ execute | default('create') }}"
+      # no_log: True
+      #comment out execute above, then delete this comment  
+      tags: test
+
+    # set the lab setup yml file name - Rockies.yml, Rockieslab.yml etc. The task that calls the lab will add .yml to name
+    # so exclude .yml
+    - name: setLab
+      set_fact:
+        lab: "veosRockieslab"
+      tags: test
+
+    # pull out a single std_image from the images dict loaded from local.yml. The "imageType" is from set_fact above.
+    - name: chooseStdImage
+      set_fact:
+        std_image: "{{ std_images[imageType] }}"
+      no_log: false
+      tags: test
+
+ # pull out a single mgmt_image from the images dict loaded from local.yml. The "mgmtImageType" is from set_fact above.
+    - name: chooseMgmtImage
+      set_fact:
+        mgmt_image: "{{ mgmt_images[mgmtImageType] }}"
+      no_log: false
+      tags: test 
+
+    - name: Testing for Image and Lab variables 
+      debug:  
+        msg: 
+          - "{{ std_image.name }}" 
+          - "{{ mgmt_image }}"
+          - "{{ lab }}"
+      tags: test
+
+
+    # load the lab and fill in any variable substituions
+    - name: loadLab
+      ansible.builtin.include_vars:
+        file: "labs/{{ lab }}.yml"
+      # no_log: true
+
+    - name: Operationionalize and Execute!!!
+      debug:
+        msg: "Running {{ execute }} for Lab: {{ gns3_project_name }}"
+
+    # call the right role to either create or delete the lab
+    - name: create
+      when: execute == "create"
+      import_role:
+        name: create_lab
+
+    - name: delete
+      when: execute == "delete"
+      block:
+        - import_role:
+            name: delete_lab
+
+
+      

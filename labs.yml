@@ -24,8 +24,7 @@
       ansible.builtin.include_vars:
         file: "vars/local.yml"
       no_log: false
-      tags: test 
-
+      tags: output
     # because we can't set and use a variable in the same set_fact we need to have a separate task
     #   to default these values - these are commands we can set from --extra-vars or "e" on the command line
     - name: setImageType
@@ -35,27 +34,26 @@
         execute: "{{ execute | default('create') }}"
       # no_log: True
       #comment out execute above, then delete this comment  
-      tags: test
-
+      tags: output
     # pull out a single image from the images dict loaded from local.yml
     - name: chooseStdImage
       set_fact:
         std_image: "{{ std_images[imageType] }}"
       no_log: false
-      tags: test 
+      tags: output
 
     - name: chooseMgmtImage
       set_fact:
         mgmt_image: "{{ mgmt_images[mgmtImageType] }}"
       no_log: false
-      tags: test 
+      tags: output 
 
     - name: debug image 
       debug:  
         msg: 
           - "{{ std_image }}" 
           - "{{ mgmt_image }}"
-      tags: test
+      tags: output
 
 
     # load the lab and fill in any variable substituions
@@ -79,6 +77,7 @@
       block:
         - import_role:
             name: delete_lab
+
 
       #let's load up some configurations - doesn't work with veos - must use ceos
     # - name: loadSwitchConfiguration

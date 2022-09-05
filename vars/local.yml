@@ -33,6 +33,10 @@ mgmt_images:
     type: "veos"
     managementPort: "ma1"
   builtin:
-    name: "Ethernet switch"
+    name: "thirtytwo"
     interfacePrefix: "Ethernet"
     type: "builtin"
+  # builtin:
+  #   name: "Ethernet switch"
+  #   interfacePrefix: "Ethernet"
+  #   type: "builtin"

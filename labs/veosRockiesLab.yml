@@ -104,7 +104,7 @@ gns3_links_spec:
   - [ 'Spine-1',    "{{ std_image.interfacePrefix }}1", 'Leaf-1A',  "{{ std_image.interfacePrefix }}1" ]
   - [ 'Spine-1',    "{{ std_image.interfacePrefix }}2", 'Leaf-1B',  "{{ std_image.interfacePrefix }}1" ]
   - [ 'Spine-1',    "{{ std_image.interfacePrefix }}3", 'Leaf-2A',  "{{ std_image.interfacePrefix }}1" ]
-  - [ 'Spine-1',    "{{ std_image.interfacePrefix }}4", 'Leaf-2B',  "{{ std_image.interfacePrefix }}2" ]
+  - [ 'Spine-1',    "{{ std_image.interfacePrefix }}4", 'Leaf-2B',  "{{ std_image.interfacePrefix }}1" ]
   - [ 'Spine-1',    "{{ std_image.interfacePrefix }}5", 'Leaf-3A',  "{{ std_image.interfacePrefix }}1" ]
   - [ 'Spine-1',    "{{ std_image.interfacePrefix }}6", 'Leaf-3B',  "{{ std_image.interfacePrefix }}1" ]
   - [ 'Spine-2',    "{{ std_image.interfacePrefix }}1", 'Leaf-1A',  "{{ std_image.interfacePrefix }}2" ]

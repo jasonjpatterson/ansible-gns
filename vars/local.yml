@@ -28,7 +28,7 @@ std_images:
     managementPort: "ma1"
 
   eos_4_29_1:
-    name: "EOS-4.28.1"
+    name: "EOS-4.29.1"
     interfacePrefix: "Eth"
     type: "veos"
     managementPort: "ma1"

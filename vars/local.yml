@@ -20,7 +20,7 @@ std_images:
     interfacePrefix: "eth"
     type: "ceos"
     managementPort: "eth0"
-    
+
   eos_4_28_1:
     name: "EOS-4.28.1"
     interfacePrefix: "Eth"
@@ -39,7 +39,7 @@ mgmt_images:
     interfacePrefix: "Eth"
     type: "veos"
     managementPort: "ma1"
-  builtin:
+  mgmt_switch:
     name: "thirtytwo"
     interfacePrefix: "Ethernet"
     type: "builtin"

@@ -14,7 +14,7 @@
 # default value ('builtin' in this case). The value of builtinType, if called in the playbook, is assigned to variabme mgmtImageType
     - name: setImageType
       set_fact:
-        imageType: "{{ imageType | default('veos') }}"
+        imageType: "{{ imageType | default(none) }}"
         mgmtImageType: "{{ builtinType | default('builtin') }}"
         execute: "{{ execute | default('create') }}" 
 
@@ -31,10 +31,10 @@
     - name: Testing for Image and Lab variables 
       debug:  
         msg: 
-          - " line1: {{ std_image.name }}" 
-          - " line2: {{ mgmt_image }}"
-          - " line3:  {{ mgmtImageType }}"
-          - " line4:  {{ builtinType }}"
+          - " line1: {{ std_image.name }} " 
+          # - " line2: {{ mgmt_image }}"
+          # - " line3:  {{ mgmtImageType }}"
+          # - " line4:  {{ builtinType }}"
 
 
 

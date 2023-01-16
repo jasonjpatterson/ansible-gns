@@ -29,7 +29,7 @@
     # so exclude .yml
     - name: setLab
       set_fact:
-        lab: "veosRockieslab"
+        lab: "superspine3"
       tags: test
 
     # pull out a single std_image from the images dict loaded from local.yml. The "switchImage" is from set_fact above.

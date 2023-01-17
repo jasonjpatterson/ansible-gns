@@ -1,0 +1,142 @@
+---
+gns3_project_name: "{{ lab }}"
+gns3_nodes_strategy: "none"
+
+gns3_nodes_spec:
+  - name: Spine-1
+    template: "{{ std_image.name }}"
+    x: -330.0
+    y: -330.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Spine-2
+    template: "{{ std_image.name }}"
+    x: -180.0
+    y: -330.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+ 
+  - name: Leaf-1A
+    template: "{{ std_image.name }}"
+    x: -800.0
+    y: -100.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Leaf-1B
+    template: "{{ std_image.name }}"
+    x: -700.0
+    y: -100.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Leaf-2A
+    template: "{{ std_image.name }}"
+    x: -500.0
+    y: -100.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Leaf-2B
+    template: "{{ std_image.name }}"
+    x: -400.0
+    y: -100.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Leaf-3A
+    template: "{{ std_image.name }}"
+    x: -200.0
+    y: -100.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Leaf-3B
+    template: "{{ std_image.name }}"
+    x: -100.0
+    y: -100.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Host-1
+    template: "{{ std_image.name }}"
+    x: -750.0
+    y: 45.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Host-2
+    template: "{{ std_image.name }}"
+    x: -450.0
+    y: 45.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+  
+  - name: Host-3
+    template: "{{ std_image.name }}"
+    x: -150.0
+    y: 45.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Outside
+    template: "{{ std_image.name }}"
+    x: 45.0
+    y: 195.0
+    z: 1.0
+    symbol: "{{ default_symbol }}"
+
+  - name: Management
+    template: "{{ mgmt_image.name }}"
+    x: 146.0
+    y: -390.0
+    z: 0.0
+
+  - name: Cloud1
+    template: "Cloud"
+    x: -250.0
+    y: 100
+    z: 1.0
+
+gns3_links_spec:
+  # Spine-#, interface, Leaf-#A/B, interface
+  - [ 'Spine-1',    "Eth1", 'Leaf-1A',  "Eth1" ]
+  - [ 'Spine-1',    "Eth2", 'Leaf-1B',  "Eth1" ]
+  - [ 'Spine-1',    "Eth3", 'Leaf-2A',  "Eth1" ]
+  - [ 'Spine-1',    "Eth4", 'Leaf-2B',  "Eth1" ]
+  - [ 'Spine-1',    "Eth5", 'Leaf-3A',  "Eth1" ]
+  - [ 'Spine-1',    "Eth6", 'Leaf-3B',  "Eth1" ]
+  - [ 'Spine-2',    "Eth1", 'Leaf-1A',  "Eth2" ]
+  - [ 'Spine-2',    "Eth2", 'Leaf-1B',  "Eth2" ]
+  - [ 'Spine-2',    "Eth3", 'Leaf-2A',  "Eth2" ]
+  - [ 'Spine-2',    "Eth4", 'Leaf-2B',  "Eth2" ]
+  - [ 'Spine-2',    "Eth5", 'Leaf-3A',  "Eth2" ]
+  - [ 'Spine-2',    "Eth6", 'Leaf-3B',  "Eth2" ]
+  # Leaf to host connections
+  - [ 'Leaf-1A',    "Eth5", 'Host-1',   "Eth1" ]
+  - [ 'Leaf-1B',    "Eth5", 'Host-1',   "Eth2" ]
+  - [ 'Leaf-2A',    "Eth5", 'Host-2',   "Eth1" ]
+  - [ 'Leaf-2B',    "Eth5", 'Host-2',   "Eth2" ]
+  - [ 'Leaf-3A',    "Eth5", 'Host-3',   "Eth1" ]
+  - [ 'Leaf-3B',    "Eth5", 'Host-3',   "Eth2" ]
+  # Leaf MLAG connections
+  - [ 'Leaf-1A',    "Eth8", 'Leaf-1B',  "Eth8" ]
+  - [ 'Leaf-2A',    "Eth8", 'Leaf-2B',  "Eth8" ]
+  - [ 'Leaf-3A',    "Eth8", 'Leaf-3B',  "Eth8" ]
+  #SVC Leaf northbound connections
+  - [ 'Leaf-3A',    "Eth7", 'Outside',  "Eth1" ]
+  - [ 'Leaf-3B',    "Eth7", 'Outside',  "Eth2" ]
+  - [ 'Management', "Ethernet1", 'Spine-1',  "ma1" ]
+  - [ 'Management', "Ethernet2", 'Spine-2',  "ma1" ]
+  - [ 'Management', "Ethernet3", 'Leaf-1A',  "ma1" ]
+  - [ 'Management', "Ethernet4", 'Leaf-1B',  "ma1" ]
+  - [ 'Management', "Ethernet5", 'Leaf-2A',  "ma1" ]
+  - [ 'Management', "Ethernet6", 'Leaf-2B',  "ma1" ]
+  - [ 'Management', "Ethernet7", 'Leaf-3A',  "ma1" ]
+  - [ 'Management', "Ethernet8", 'Leaf-3B',  "ma1" ]
+  - [ 'Management', "Ethernet9", 'Host-1',   "ma1" ]
+  - [ 'Management', "Ethernet10", 'Host-2',   "ma1" ]
+  - [ 'Management', "Ethernet11", 'Host-3',  "ma1" ]
+  - [ 'Management', "Ethernet12", 'Outside', "ma1" ]
+  - [ 'Management', "Ethernet0", 'Cloud1', "eth1" ]

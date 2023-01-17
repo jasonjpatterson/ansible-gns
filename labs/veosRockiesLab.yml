@@ -1,5 +1,5 @@
 ---
-gns3_project_name: "{{ PREFIX }}Test-{{ std_image.type }}"
+gns3_project_name: "{{ PREFIX }}-{{ lab }}-{{ std_image.type }}"
 gns3_nodes_strategy: "none"
 
 gns3_nodes_spec:

@@ -18,7 +18,7 @@
     # if called in the playbook, is assigned to variabme switchImage
     - name: setImages
       set_fact:
-        switchImage: "{{ extra_var_switchImage | default('eos_4_29_1') }}"
+        switchImage: "{{ extra_var_switchImage | default('eos_4_29_2') }}"
         mgmtImage: "{{ extra_var_mgmtImage | default('mgmt_switch') }}"
         execute: "{{ execute | default('create') }}"
       # no_log: True

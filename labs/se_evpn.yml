@@ -80,7 +80,7 @@ gns3_nodes_spec:
     z: 1.0
     symbol: "{{ default_symbol }}"
 
-  - name: Outside
+  - name: Outside-1
     template: "{{ std_image.name }}"
     x: -250.0
     y: 45.0
@@ -119,15 +119,15 @@ gns3_links_spec:
   - [ 'Leaf-1B',    "Eth11", 'Host-1',   "Eth2" ]
   - [ 'Leaf-2',    "Eth13", 'Host-2',   "Eth1" ]
   #- [ 'Leaf-2B',    "Eth5", 'Host-2',   "Eth2" ]
-  #- [ 'Leaf-3A',    "Eth5", 'Outside',   "Eth1" ]
-  #- [ 'Leaf-3B',    "Eth5", 'Outside',   "Eth2" ]
+  #- [ 'Leaf-3A',    "Eth5", 'Outside-1',   "Eth1" ]
+  #- [ 'Leaf-3B',    "Eth5", 'Outside-1',   "Eth2" ]
   # Leaf MLAG connections
   - [ 'Leaf-1A',    "Eth8", 'Leaf-1B',  "Eth8" ]
   #- [ 'Leaf-2A',    "Eth8", 'Leaf-2B',  "Eth8" ]
   - [ 'Leaf-3A',    "Eth8", 'Leaf-3B',  "Eth8" ]
   #SVC Leaf northbound connections
-  - [ 'Leaf-3A',    "Eth15", 'Outside',  "Eth1" ]
-  - [ 'Leaf-3B',    "Eth15", 'Outside',  "Eth2" ]
+  - [ 'Leaf-3A',    "Eth15", 'Outside-1',  "Eth1" ]
+  - [ 'Leaf-3B',    "Eth15", 'Outside-1',  "Eth2" ]
   #MGMT connections
   - [ 'Management', "Ethernet1", 'Spine-1',  "ma1" ]
   - [ 'Management', "Ethernet2", 'Spine-2',  "ma1" ]
@@ -140,6 +140,6 @@ gns3_links_spec:
   - [ 'Management', "Ethernet9", 'Host-1',   "ma1" ]
   - [ 'Management', "Ethernet13", 'Host-1a',   "ma1" ]
   - [ 'Management', "Ethernet10", 'Host-2',   "ma1" ]
-  - [ 'Management', "Ethernet11", 'Outside',  "ma1" ]
-  - [ 'Management', "Ethernet12", 'Outside', "ma1" ]
+  - [ 'Management', "Ethernet11", 'Outside-1',  "ma1" ]
+  - [ 'Management', "Ethernet12", 'Outside-1', "ma1" ]
   - [ 'Management', "Ethernet0", 'Cloud1', "eth1" ]
